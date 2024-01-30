@@ -1,4 +1,4 @@
-namespace WebApplication.API
+namespace Microservice.API
 {
     public class WeatherForecast
     {

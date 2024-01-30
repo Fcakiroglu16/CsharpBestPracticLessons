@@ -1,10 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
+
+
+    <ContainerFamily>alpine</ContainerFamily>
+	  <ContainerRepository>microservice-api-image</ContainerRepository>  <!--image name-->
+	  <ContainerBaseImage>mcr.microsoft.com/dotnet/runtime:8.0</ContainerBaseImage>
+    <ContainerImageTags>1.0;latest</ContainerImageTags>
   </PropertyGroup>
 
   <ItemGroup>
