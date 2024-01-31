@@ -6,14 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
 
-
-    <ContainerFamily>alpine</ContainerFamily>
-	  <ContainerRepository>microservice-api-image</ContainerRepository>  <!--image name-->
-	  <ContainerBaseImage>mcr.microsoft.com/dotnet/runtime:8.0</ContainerBaseImage>
-    <ContainerImageTags>1.0;latest</ContainerImageTags>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
