@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.API.ExceptionHandlers;
 
 namespace WebApplication.API.Controllers
 {
@@ -11,6 +12,16 @@ namespace WebApplication.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            throw new Exception("Normal Error");
+            return Ok(new { Data = "Hello World :-)", IsSuccess = true });
+            //return Ok("Hello World :-)");
+        }
+
+
+        [HttpPost]
+        public IActionResult Post()
+        {
+            throw new CriticalException("Critical Error");
             return Ok(new { Data = "Hello World :-)", IsSuccess = true });
             //return Ok("Hello World :-)");
         }

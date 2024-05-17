@@ -1,8 +1,4 @@
-using FastEndpoints;
-using FastEndpoints.Swagger;
-using Microsoft.FeatureManagement;
-using Microsoft.FeatureManagement.FeatureFilters;
-using WebApplication.API.Middlewares;
+using WebApplication.API.ExceptionHandlers;
 
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
@@ -13,7 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddExceptionHandler<CriticalExceptionHandler>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,9 +19,8 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
-
+app.UseExceptionHandler();
 app.UseAuthorization();
-app.UseMiddleware<EmojiMiddleware>();
 app.MapControllers();
 
 
