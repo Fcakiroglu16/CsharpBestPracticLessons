@@ -2,6 +2,7 @@ using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
+using WebApplication.API.Middlewares;
 
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
@@ -13,9 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddFastEndpoints().SwaggerDocument();
 var app = builder.Build();
-app.UseFastEndpoints().UseSwaggerGen();
+
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
@@ -23,7 +23,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<EmojiMiddleware>();
 app.MapControllers();
 
 
