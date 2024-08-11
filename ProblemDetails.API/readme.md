@@ -1,0 +1,1 @@
+﻿https://timdeschryver.dev/blog/translating-exceptions-into-problem-details-responses#problem-details-with-aspnet
